@@ -4,10 +4,14 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 const webpack = require("webpack");
 
 module.exports = {
-  entry: "./main",
+  entry: {
+    main: "./frontend/main",
+    about: "./frontend/about"
+  },
   output: {
-    filename: "build.js",
-    library: "main"
+    path: __dirname + '/public',
+    filename: "[name].js",
+    library: "[name]" // Экспорт глобальных переменных по названию файла
   },
   watch: NODE_ENV == 'development',
   devtool: NODE_ENV == 'development' ? "source-map" : null,
